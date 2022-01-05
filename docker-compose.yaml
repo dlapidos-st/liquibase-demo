@@ -46,20 +46,6 @@ services:
       - citus-pgadmin-data-liquibase:/var/lib/pgadmin
     networks:
       - liquibase-network
-  migration:
-    container_name: migration-liquibase
-    depends_on: 
-      - manager
-      - master
-      - worker
-      - pause
-    image: liquibase/liquibase:4.6.2
-    env_file:
-      - postgres.env    
-    networks:
-      - liquibase-network
-    volumes:
-      - ./liquibase/sql:/liquibase/changelog
 
 networks:
   liquibase-network:
